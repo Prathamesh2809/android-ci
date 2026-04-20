@@ -23,12 +23,19 @@ platform :android do
   end
 
   desc "Build debug APK"
-  lane :build_debug do
+  lane :build_debug do  
     gradle(
       task: "assembleDebug",
       project_dir: "."
     )
   end
+  desc "Build release APK"
+  lane :build_release do
+    gradle(
+      task: "assembleRelease",
+      project_dir: "."
+    )
+end
 
 end
 
