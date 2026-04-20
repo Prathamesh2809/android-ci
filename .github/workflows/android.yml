@@ -4,11 +4,13 @@ permissions:
   contents: write
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
+  workflow_dispatch:
+  
 
 jobs:
+  sonar:
+    uses: ./.github/workflows/sonar-reusable.yml
+    secrets: inherit
   build:
     runs-on: ubuntu-latest
 
