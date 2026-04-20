@@ -17,25 +17,29 @@ default_platform(:android)
 
 platform :android do
 
-  desc "Runs all the tests"
-  lane :test do
-    gradle(task: "test")
+  desc "Build debug APK"
+  lane :build_debug do
+    gradle(
+      task: "clean assembleDebug",
+      project_dir: "."
+    )
   end
 
-  desc "Build debug APK"
-  lane :build_debug do  
+  desc "Build signed release APK"
+  lane :build_release do
     gradle(
-      task: "assembleDebug",
+      task: "clean assembleRelease",
       project_dir: "."
     )
   end
-  desc "Build release APK"
-  lane :build_release do
+
+  desc "Build release AAB (Play Store)"
+  lane :build_aab do
     gradle(
-      task: "assembleRelease",
+      task: "clean bundleRelease",
       project_dir: "."
     )
-end
+  end
 
 end
 
